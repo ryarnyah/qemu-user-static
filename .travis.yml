@@ -1,0 +1,20 @@
+---
+sudo: required
+language: minimal
+
+sudo: true
+notifications:
+  email: true
+
+services:
+  - docker
+
+script:
+  - /bin/bash build.sh
+
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: /bin/bash deploy.sh
+    on:
+      tags: true
